@@ -28,15 +28,20 @@ NextOne: How to use
 What does NextOne do?
 ========================================================
 
-<font size=5.5>
+<font size=5>
 
-NextOne is an app developed with shiny, an R library. Its purpose is to show the power of natural language processing for text prediction.
+For this example we used English texts ownloaded from the HC Corpora, a collection of text files from newspapers, magazines, blogs and Twitter updates.  Text data was preprocessed before being mined.
 
-For this example we used English texts ownloaded from the HC Corpora, a collection of text files from many different sources, such as newspapers, magazines, blogs and Twitter updates.
+All text mining an natural language processing was done using R libraries like tm, RWeka, stringi, hashFunction, wordcloud, and parallel.
 
-The stupid backoff algorithm based on an n-gram language model is used to predict the most likely word to be entered next based on the three previous ones. The system was modeled as a third-order Markov process because  of simplicity and due to memory limitations and for fast operation.
+The stupid backoff algorithm based on an n-gram language model is used to predict the most likely word to be entered next based on the three previous ones. The system was modeled as a third-order Markov process because  of simplicity and due to memory limitations and for fast operation. The algorithm has the following steps:
 
-All text mining an natural language processing was done using R libraries like tm, RWeka, stringi, hashFunction and wordcloud. For more efficient use of the processor, the library parallel was used to parallelize the code.
+- Take the last three words and look for tetra-grams. Then find the relative frequency of each word F1.
+- Take the last two words and look for tri-grams. Then find the relative frequency of each word F2.
+- Take the last word and look for bi-grams. Then find the relative frequency of each word F3.
+- Find the relative frequency of the most common words F4.
+- Define a factor a < 1, such that the likelihood of a word is given by F = F1  + a ( F2 + a ( F3  + a F4 ) ). The factor a ensures that closer attention is paid to higher n-grams.
+- Then the 100 more likely words (higher F ) are selected and the likelihoods are normalized.
 
 </font>
 
