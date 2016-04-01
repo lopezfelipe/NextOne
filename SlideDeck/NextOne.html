@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NextOne</title>
+  <meta charset="utf-8">
+  <meta name="description" content="NextOne">
+  <meta name="author" content="Felipe Lopez">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>NextOne</h1>
+    <h2>Word Predictor for Easier Texting</h2>
+    <p>Felipe Lopez<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Texting should be easier</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Texting is the most widely-used form of communication in the US. 97% of Americans text at least once a day.</p>
+
+<p>Most texts are written in less than 5 seconds. Short  times + tiny screens = Typos.</p>
+
+<p>Various apps try to make texting easier by predicting what you meant or what you want to say next: Swiftkey, Swype, Fleksy, etc. With these apps we want to get to know you and the way you text so we can predict what you&#39;ll type next and suggest a shortcut!</p>
+
+<p><img src="GrandmaTexting.jpg" alt="width"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>NextOne: How to use</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="NextOne.png" alt="width"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>What does NextOne do?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>NextOne is an app developed with shiny, an R library. Its purpose is to show the power of natural language processing for text prediction.</p>
+
+<p>For this example we used English texts ownloaded from the HC Corpora, a collection of text files from many different sources, such as newspapers, magazines, blogs and Twitter updates.</p>
+
+<p>The stupid backoff algorithm based on an n-gram language model is used to predict the most likely word to be entered next based on the three previous ones. The system was modeled as a third-order Markov process because  of simplicity and due to memory limitations and for fast operation.</p>
+
+<p>All text mining an natural language processing was done using R libraries like tm, RWeka, stringi, hashFunction and wordcloud. For more efficient use of the processor, the library parallel was used to parallelize the code.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>NextOne performance</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The accuracy obtained with this example was between 15-25%, depending on the testing set. The accuracy may seem low but so far it considers only word-to-word relationships without updating when the first letters of the new word have already been entered. Adding such capabilities is expected to improve the accuracy of NextOne.</p>
+
+<p>The aplha version is available at <a href="https://lopezfelipe.shinyapps.io/Week04/">https://lopezfelipe.shinyapps.io/Week04/</a></p>
+
+<p>For comments and suggestions, email <a href="mailto:felipelopez@utexas.edu">felipelopez@utexas.edu</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Texting should be easier'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='NextOne: How to use'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='What does NextOne do?'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NextOne performance'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
