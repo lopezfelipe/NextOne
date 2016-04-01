@@ -787,15 +787,22 @@ hljs.initHighlightingOnLoad();
 <section data-transition="linear" data-transition-speed="default">
 <h3>What does NextOne do?</h3>
 <div class="slideContent" >
-<p><font size=5.5></p>
+<p><font size=5></p>
 
-<p>NextOne is an app developed with shiny, an R library. Its purpose is to show the power of natural language processing for text prediction.</p>
+<p>For this example we used English texts ownloaded from the HC Corpora, a collection of text files from newspapers, magazines, blogs and Twitter updates.  Text data was preprocessed before being mined.</p>
 
-<p>For this example we used English texts ownloaded from the HC Corpora, a collection of text files from many different sources, such as newspapers, magazines, blogs and Twitter updates.</p>
+<p>All text mining an natural language processing was done using R libraries like tm, RWeka, stringi, hashFunction, wordcloud, and parallel.</p>
 
-<p>The stupid backoff algorithm based on an n-gram language model is used to predict the most likely word to be entered next based on the three previous ones. The system was modeled as a third-order Markov process because  of simplicity and due to memory limitations and for fast operation.</p>
+<p>The stupid backoff algorithm based on an n-gram language model is used to predict the most likely word to be entered next based on the three previous ones. The system was modeled as a third-order Markov process because  of simplicity and due to memory limitations and for fast operation. The algorithm has the following steps:</p>
 
-<p>All text mining an natural language processing was done using R libraries like tm, RWeka, stringi, hashFunction and wordcloud. For more efficient use of the processor, the library parallel was used to parallelize the code.</p>
+<ul>
+<li>Take the last three words and look for tetra-grams. Then find the relative frequency of each word F1.</li>
+<li>Take the last two words and look for tri-grams. Then find the relative frequency of each word F2.</li>
+<li>Take the last word and look for bi-grams. Then find the relative frequency of each word F3.</li>
+<li>Find the relative frequency of the most common words F4.</li>
+<li>Define a factor a &lt; 1, such that the likelihood of a word is given by F = F1  + a ( F2 + a ( F3  + a F4 ) ). The factor a ensures that closer attention is paid to higher n-grams.</li>
+<li>Then the 100 more likely words (higher F ) are selected and the likelihoods are normalized.</li>
+</ul>
 
 <p></font></p>
 
